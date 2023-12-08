@@ -6,6 +6,16 @@
     <img src="~/assets/img/8.png" alt="img" />
   </div>
 </template>
-<script>
+<script setup>
 import "~/assets/css/style.css";
+
+onMounted(() => {
+  const io = useIO();
+  const socket = io("ws://localhost:3000", {
+    transports: ["websocket"],
+  });
+  socket.emit("enter_room", { payload: "dd" }, () => {
+    console.log("server is done!");
+  });
+});
 </script>

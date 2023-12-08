@@ -17,6 +17,7 @@ export default defineNuxtConfig({
       },
     },
   },
+  modules: ["nuxt3-socket.io"],
   devServer: {
     port: 3333,
   },
