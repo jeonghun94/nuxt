@@ -17,7 +17,7 @@ export default defineNuxtConfig({
       },
     },
   },
-  modules: ["nuxt3-socket.io"],
+  modules: ["nuxt3-socket.io", "nuxt-icon"],
   devServer: {
     port: 3333,
   },

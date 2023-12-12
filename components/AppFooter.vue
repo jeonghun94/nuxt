@@ -1,5 +1,5 @@
 <template>
-  <footer>
-    <p>This is the footer.</p>
+  <footer class="mt-3 text-center">
+    <p>copyright © ubivelox</p>
   </footer>
 </template>
