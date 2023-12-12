@@ -1,7 +1,7 @@
 <template>
-  <div class="w-full min-h-[calc(100vh-51px)] p-5 flex flex-col gap-8">
+  <div class="min-h-[calc(100vh-51px)] p-5 flex flex-col gap-8">
     <button
-      class="p-3 bg-gray-600 rounded-[5px] text-white w-full text-sm py-2 flex items-center justify-center gap-3"
+      class="p-3 -mt-1 bg-gray-600 rounded-[5px] text-white w-full text-sm py-2 flex items-center justify-center gap-3"
     >
       수업 대기
       <div
