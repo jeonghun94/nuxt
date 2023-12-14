@@ -1,64 +1,78 @@
 <template>
-  <div class="min-h-[calc(100vh-51px)] p-5 flex flex-col gap-8">
-    <button
-      class="p-3 -mt-1 bg-gray-600 rounded-[5px] text-white w-full text-sm py-2 flex items-center justify-center gap-3"
-    >
-      수업 대기
-      <div
-        class="h-12 w-12 rounded-full bg-white flex items-center justify-center"
-      >
-        <Icon name="ic:outline-rocket-launch" class="h-8 w-8 text-gray-500" />
-      </div>
-    </button>
+  <header>
+    <nav class="w-full px-5 py-3 text-white bg-blue-950 border-b">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <h1 class="font-semibold">초등 3학년 1학기</h1>
+          <h2
+            class="text-sm font-semibold text-gray-200 flex items-center gap-1"
+          >
+            <Icon name="subway:admin" />조정훈 선생님
+          </h2>
+          <button
+            class="border text-sm text-gray-400 border-gray-400 px-2 rounded-3xl"
+          >
+            로그아웃
+          </button>
+        </div>
 
-    <div
-      v-for="section in sections"
-      :key="section.title"
-      class="flex flex-col gap-1 fle col-span-8 text-sm font-semibold"
-    >
-      <h1
-        v-for="item in section.items"
-        :key="item.name"
-        :class="section.className"
-      >
-        <Icon :name="item.icon" class="text-lg" />
-        {{ item.name }}
-      </h1>
-    </div>
-  </div>
+        <ul
+          class="flex justify-between items-center gap-7 text-sm font-semibold"
+        >
+          <li v-for="item in visibleMenuItems" :key="item.name">
+            <NuxtLink :to="item.link" class="flex items-center gap-2">
+              <Icon :name="item.icon" class="text-lg" />
+              {{ item.text }}
+            </NuxtLink>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
 </template>
 
 <script setup>
-const sections = [
+import { ref, computed } from "vue";
+
+const menuItems = ref([
   {
-    title: "Section 1",
-    className:
-      "border border-gray-500 rounded-[5px] p-2 flex items-center gap-1",
-    items: [
-      { name: "진도 학습", icon: "ic:sharp-menu-book" },
-      { name: "수업 자료실", icon: "ic:outline-library-books" },
-      { name: "수학 익힘 문제", icon: "ic:twotone-sticky-note-2" },
-    ],
+    name: "notebook",
+    icon: "icon-park-outline:notebook",
+    text: "오늘의 수업",
+    link: "/",
+    isVisible: true,
   },
   {
-    title: "Section 2",
-    className: "border-b border-gray-300 p-2 flex items-center gap-1",
-    items: [
-      { name: "수업 활동 도구", icon: "ic:outline-color-lens" },
-      { name: "누리집 연동", icon: "ic:outline-sports-volleyball" },
-      { name: "콘텐츠 연동", icon: "ic:outline-swap-horizontal-circle" },
-      { name: "화이트 보드", icon: "ic:outline-aspect-ratio" },
-    ],
+    name: "chart",
+    icon: "icon-park-outline:chart-histogram",
+    text: "학습 결과",
+    link: "/",
+    isVisible: true,
   },
   {
-    title: "Section 3",
-    className: "bg-gray-100 py-3 px-2 flex items-center gap-1 rounded-md",
-    items: [
-      { name: "화면 가리기", icon: "ic:twotone-stop-screen-share" },
-      { name: "모니터링", icon: "ic:baseline-monitor" },
-      { name: "기능단추 작게", icon: "ic:baseline-format-list-bulleted" },
-      { name: "확대 축소", icon: "ic:outline-plus-minus-alt" },
-    ],
+    name: "calculator",
+    icon: "icon-park-outline:calculator",
+    text: "과제 관리",
+    link: "/",
+    isVisible: true,
   },
-];
+  {
+    name: "add-web",
+    icon: "icon-park-outline:add-web",
+    text: "수업 준비실",
+    link: "/",
+    isVisible: true,
+  },
+  {
+    name: "setting",
+    icon: "icon-park-outline:setting-two",
+    text: "설정",
+    link: "/",
+    isVisible: true,
+  },
+]);
+
+const visibleMenuItems = computed(() => {
+  return menuItems.value.filter((item) => item.isVisible);
+});
 </script>

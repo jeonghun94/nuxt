@@ -1,6 +1,6 @@
 <template>
   <div class="w-full h-auto min-h-screen border">
-    <MainLayoutHeader />
+    <GNB />
     <slot />
   </div>
 </template>

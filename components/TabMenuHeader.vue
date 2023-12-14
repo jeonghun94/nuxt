@@ -7,7 +7,7 @@
       <span v-if="subTitle" class="text-sm">{{ subTitle }}</span>
     </p>
     <div>
-      <button>
+      <button :data-tab="title" @click="handleDelete">
         <Icon name="ic:outline-close" class="text-lg" />
       </button>
     </div>
@@ -15,6 +15,14 @@
 </template>
 
 <script setup>
+import useTabMenuStore from "@/stores/tabMenu";
+const store = useTabMenuStore();
+
+const handleDelete = (event) => {
+  const tabTitle = event.currentTarget.dataset.tab;
+  store.removeTab(tabTitle);
+};
+
 defineProps({
   title: String,
   subTitle: String,

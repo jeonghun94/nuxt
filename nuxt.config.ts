@@ -1,6 +1,15 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  modules: [
+    "nuxt3-socket.io",
+    "nuxt-icon",
+    "@pinia/nuxt",
+    "@pinia-plugin-persistedstate/nuxt",
+  ],
+  pinia: {
+    storesDirs: ["./stores/**"],
+  },
   postcss: {
     plugins: {
       tailwindcss: {},
@@ -17,7 +26,6 @@ export default defineNuxtConfig({
       },
     },
   },
-  modules: ["nuxt3-socket.io", "nuxt-icon"],
   devServer: {
     port: 3333,
   },
