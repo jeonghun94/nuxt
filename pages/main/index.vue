@@ -8,7 +8,7 @@
         :subTitle="tab.subTitle"
       />
     </div>
-
+    {{ tabMenu.at(-1)?.title }}
     <RNB class="w-2/12" @click="handleStart" />
   </div>
 
